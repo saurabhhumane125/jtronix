@@ -99,6 +99,12 @@ Invalid status: `400 Bad Request`.
 
 Malformed JSON and bodies that are not JSON objects return `400`. Requests without a JSON content type return `415`. Unsupported methods return `405`. Non-numeric, zero, negative, or unknown employee IDs return `404`. All these errors use JSON.
 
+## Try it in Postman
+
+Import `postman/Employee_API.postman_collection.json` into Postman. Start the API, then run the collection in order. The `base_url` collection variable defaults to `http://127.0.0.1:5000`; change it if you use a different port.
+
+The 12 requests demonstrate retrieval, filtering, creation, status updates, and error responses. Each request includes response checks. The create request saves the generated ID as `employee_id` for subsequent requests, so run it first when sending those requests individually.
+
 ## Try it from PowerShell
 
 With the server running, open a second terminal and send these requests. The PATCH example assumes a fresh server where the newly created employee has ID 4; otherwise use the ID from the POST response.
@@ -121,6 +127,7 @@ On macOS/Linux use `.venv/bin/python` instead. No running server is needed. Test
 
 - `app.py`: Employee dataclass, in-memory store, request validation, and routes.
 - `tests/test_api.py`: Endpoint tests using Python's built-in unittest and Flask's test client.
+- `postman/Employee_API.postman_collection.json`: Example requests with response checks.
 
 Flask keeps this small API in one readable file. An Employee dataclass defines the four required fields; `asdict()` converts each employee to a JSON-ready dictionary. Employees are stored in a dictionary keyed by ID. IDs increase from 4, and a lock protects reads and writes within one server process.
 

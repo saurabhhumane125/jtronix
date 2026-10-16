@@ -3,6 +3,5 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 dist/
-postman/
 docs/
 .env
